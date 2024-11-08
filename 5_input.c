@@ -6,7 +6,7 @@
 /*   By: gvalente <gvalente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:33:59 by gvalente          #+#    #+#             */
-/*   Updated: 2024/11/07 21:48:40 by gvalente         ###   ########.fr       */
+/*   Updated: 2024/11/08 05:58:40 by gvalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int handle_key_press(int keycode, t_mlx_data *mlx_data)
         }
         mlx_data->key_state[keycode] = 1;
         mlx_data->last_key_pressed = keycode;
-        ft_printf("Key %d pressed\n", keycode);
+        //ft_printf("Key %d pressed\n", keycode);
     }
     return (0);
 }

@@ -6,11 +6,40 @@
 /*   By: gvalente <gvalente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:31:53 by gvalente          #+#    #+#             */
-/*   Updated: 2024/11/08 03:50:17 by gvalente         ###   ########.fr       */
+/*   Updated: 2024/11/08 05:39:19 by gvalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+void	copy_image_data(void *mlx, void *src, void *dest, int width, int height)
+{
+    (void)mlx;
+	int		*src_addr;
+	int		*dest_addr;
+	int		bpp;
+	int		src_line_length;
+	int		dest_line_length;
+	int		endian;
+	int		y;
+	int		x;
+
+	src_addr = (int *)mlx_get_data_addr(src, &bpp, &src_line_length, &endian);
+	dest_addr = (int *)mlx_get_data_addr(dest, &bpp, &dest_line_length, &endian);
+	y = 0;
+	while (y < height)
+	{
+		x = 0;
+		while (x < width)
+		{
+			int src_pixel_index = (y * src_line_length / 4) + x;
+			int dest_pixel_index = (y * dest_line_length / 4) + x;
+			dest_addr[dest_pixel_index] = src_addr[src_pixel_index];
+			x++;
+		}
+		y++;
+	}
+}
 
 void    my_mlx_pixel_put(t_mlx_data *data, int x, int y, int color)
 {
