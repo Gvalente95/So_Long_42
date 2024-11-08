@@ -6,7 +6,7 @@
 /*   By: gvalente <gvalente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:21:44 by gvalente          #+#    #+#             */
-/*   Updated: 2024/11/07 22:16:02 by gvalente         ###   ########.fr       */
+/*   Updated: 2024/11/08 03:50:24 by gvalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int rand_range(int min, int max)
     return min + rand() % (max - min + 1);
 }
 
-t_Vector3 rand_Vec3(int min, int max)
+t_Vec3 rand_Vec3(int min, int max)
 {
-    t_Vector3 vec;
+    t_Vec3 vec;
 
     set_Vec3(&vec, 0,0,0);
     if (rand() % 2 == 0)
@@ -30,7 +30,8 @@ t_Vector3 rand_Vec3(int min, int max)
         vec.y = rand_range(min, max);
     return (vec);
 }
-char **get_frames(char *path, char *suffix, int amount)
+
+char **get_frames_paths(char *path, char *suffix, int amount)
 {
     int     i;
     char    *num_value;
@@ -59,7 +60,7 @@ char **get_frames(char *path, char *suffix, int amount)
     return (FRAMES_PATH);
 }
 
-int set_Vec2(t_Vector2 *Vec2, int x, int y)
+int set_Vec2(t_Vec2 *Vec2, int x, int y)
 {
     if (!Vec2)
         return (0);
@@ -68,7 +69,7 @@ int set_Vec2(t_Vector2 *Vec2, int x, int y)
     return (1);
 }
 
-int set_Vec3(t_Vector3 *Vec3, int x, int y, int z)
+int set_Vec3(t_Vec3 *Vec3, int x, int y, int z)
 {
     if (!Vec3)
         return (0);
@@ -78,7 +79,7 @@ int set_Vec3(t_Vector3 *Vec3, int x, int y, int z)
     return (1);
 }
 
-char print_Vec3(t_Vector3 Vec3)
+char print_Vec3(t_Vec3 Vec3)
 {
     printf("%d %d %d", Vec3.x, Vec3.y, Vec3.z);
     return ('\n');
